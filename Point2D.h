@@ -2,35 +2,20 @@
 #define POINT2D_H
 
 #include <ostream>
-#include <cmath>
 
 class Point2D {
 public:
-    double x;  // Coordenada x
-    double y;  // Coordenada y
+    double x;
+    double y;
 
-    // Constructor con valores por defecto
-    Point2D(double x = 0, double y = 0) : x(x), y(y) {}
+    Point2D(double x = 0, double y = 0);
 
-    // Función estática que calcula la distancia euclidiana entre dos puntos
-    static double distance(const Point2D &a, const Point2D &b) {
-        return std::sqrt(std::pow(a.x - b.x, 2) + std::pow(a.y - b.y, 2));
-    }
+    static double distance(const Point2D &a, const Point2D &b);
 
-    // Sobrecarga de operadores (amigos para poder acceder directamente a x e y)
-    friend bool operator==(const Point2D &a, const Point2D &b) {
-        return a.x == b.x && a.y == b.y;
-    }
-
-    friend bool operator!=(const Point2D &a, const Point2D &b) {
-        return !(a == b);
-    }
-
-    friend std::ostream& operator<<(std::ostream &out, const Point2D &p) {
-        out << "(" << p.x << ", " << p.y << ")";
-        return out;
-    }
+    friend bool operator==(const Point2D &a, const Point2D &b);
+    friend bool operator!=(const Point2D &a, const Point2D &b);
+    friend std::ostream& operator<<(std::ostream &out, const Point2D &p);
 };
 
-#endif // POINT2D_H
+#endif
 
