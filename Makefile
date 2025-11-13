@@ -14,4 +14,7 @@ Point2D.o: Point2D.h Point2D.cpp
 bin/testPoint2D: testPoint2D.cpp Point2D.o
 	g++ -c testPoint2D.cpp
 	mkdir -p bin
-	g++ -o bin/testPoint2D testPoint2D.o Point2D.o
+	g++ -o bin/testPoint2D
+Shape.o: Shape.cpp Shape.h
+	g++ -c Shape.cpp
+
