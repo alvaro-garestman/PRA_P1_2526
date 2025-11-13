@@ -3,6 +3,7 @@
 
 #include "List.h"
 #include <stdexcept>   // para std::out_of_range
+#include <iostream>    // para std::ostream
 
 // Implementación de una lista usando arrays dinámicos
 template <typename T>
@@ -97,6 +98,69 @@ public:
     int size() override {
         return n;
     }
+       // Operador [] para acceder a los elementos
+    T& operator[](int pos) {
+        if (pos < 0 || pos >= n)
+            throw std::out_of_range("Posición fuera de rango en operator[]");
+        return arr[pos];
+    }
+
+    // Versión const del operador []
+    const T& operator[](int pos) const {
+        if (pos < 0 || pos >= n)
+            throw std::out_of_range("Posición fuera de rango en operator[] const");
+        return arr[pos];
+    }
+
 };
 
+// ---------------------------------------------------------------
+// Sobrecarga del operador << para imprimir ListArray<T>
+// ---------------------------------------------------------------
+template <typename T>
+std::ostream& operator<<(std::ostream& os, ListArray<T>& list) {
+    os << "[";
+    for (int i = 0; i < list.size(); ++i) {
+        os << list.get(i);
+        if (i < list.size() - 1)
+            os << ", ";
+    }
+    os << "]";
+    return os;
+}
+
 #endif // LISTARRAY_H
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
